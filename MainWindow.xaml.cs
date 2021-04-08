@@ -33,12 +33,13 @@ namespace JsonParserGTIN
         {
             InitializeComponent();
 
-            RadioButton rb1 = new RadioButton { IsChecked = true, GroupName = "host", Content = "prod" };
-            RadioButton rb2 = new RadioButton { IsChecked = true, GroupName = "host", Content = "preprod" };
-            RadioButton rb3 = new RadioButton { IsChecked = true, GroupName = "host", Content = "demo" };
-            rb1.Checked += radioButton_Checked;
-            rb2.Checked += radioButton1_Checked;
-            rb3.Checked += radioButton_Checked;
+            path.Text = File.ReadAllText(@"path\path.txt");
+            host = File.ReadAllText(@"hosts\prod.txt");
+
+            RadioButton rb1 = new RadioButton { IsChecked = true, GroupName = "tokenhost", Content = "Prod" };
+            RadioButton rb3 = new RadioButton { IsChecked = true, GroupName = "tokenhost", Content = "NewToken" };
+            rb1.Checked += getTokenProd;
+            rb3.Checked += getTokenNew;
         }
 
         private void btn_Click(object sender, RoutedEventArgs e)
@@ -59,22 +60,14 @@ namespace JsonParserGTIN
                 path.Text = openFileDialog.FileName;
         }
 
-        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        private void getTokenProd(object sender, RoutedEventArgs e)
         {
-            this.host = File.ReadAllText(@"hosts\prod.txt");
             this.token = Import.getTokenProd();
         }
 
-        private void radioButton1_Checked(object sender, RoutedEventArgs e)
+        private void getTokenNew(object sender, RoutedEventArgs e)
         {
-            this.host = File.ReadAllText(@"hosts\preprod.txt");
-            this.token = Import.getTokenPreProd();
-        }
-
-        private void radioButton2_Checked(object sender, RoutedEventArgs e)
-        {
-            this.host = File.ReadAllText(@"hosts\demo.txt");
-            this.token = Import.getTokenDemo();
+            this.token = Import.getTokenNew();
         }
     }
 }

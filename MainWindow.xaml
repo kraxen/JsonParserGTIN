@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JsonParserGTIN"
         mc:Ignorable="d"
-        Title="Foiv Parser Json v_2" Height="226.239" Width="448.401">
+        Title="Foiv Parser Json v_2.1" Height="252.239" Width="448.401">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="54*"/>
@@ -17,11 +17,12 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" Text="Путь к файлу:" VerticalAlignment="Top" RenderTransformOrigin="0.277,-0.676" Width="91" Grid.ColumnSpan="2"/>
         <Button x:Name="button" Content="Выбрать файл" HorizontalAlignment="Left" Margin="189,82,0,0" VerticalAlignment="Top" Width="118" Click="button_Click" Grid.Column="2"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="189,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Grid.Column="2"/>
-        <RadioButton x:Name="radioButton" Content="prod" GroupName="host" HorizontalAlignment="Left" IsChecked="True" Margin="10,81,0,0" VerticalAlignment="Top" Height="15" Checked="radioButton_Checked"/>
-        <RadioButton x:Name="radioButton1" Content="preprod" GroupName="host" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Checked="radioButton1_Checked" Grid.ColumnSpan="2"/>
-        <RadioButton x:Name="radioButton2" Content="demo" GroupName="host" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Checked="radioButton2_Checked" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="150"><Run Text="Делить файл на "/><Run Text="GTIN "/><Run Text="по"/><Run Text=":"/></TextBlock>
-        <TextBox x:Name="GtinCount" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="21" Margin="10,153,0,0" TextWrapping="Wrap" Text="50" VerticalAlignment="Top" Width="136"/>
+        <RadioButton x:Name="radioButton" Content="prod" GroupName="host" HorizontalAlignment="Left" IsChecked="True" Margin="10,81,0,0" VerticalAlignment="Top" Height="15"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="150"><Run Text="Делить файл на "/><Run Text="GTIN "/><Run Text="по"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="GtinCount" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="21" Margin="10,190,0,0" TextWrapping="Wrap" Text="50" VerticalAlignment="Top" Width="136"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="Токен" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="68"/>
+        <RadioButton x:Name="radioButton1" Content="Prod" GroupName="tokenhost" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="68" Checked="getTokenProd"/>
+        <RadioButton x:Name="radioButton2" Content="NewToken" GroupName="tokenhost" IsChecked="True" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="91" Checked="getTokenNew"/>
 
 
     </Grid>

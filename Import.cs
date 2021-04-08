@@ -64,7 +64,8 @@ namespace JsonParserGTIN
             {
                 string login = File.ReadAllText(@"tokenProd\login.txt");
                 string password = File.ReadAllText(@"tokenProd\password.txt");
-                var client = new RestClient("http://markirovka.crpt.ru/oauth/token");
+                string host = File.ReadAllText(@"tokenNew\host.txt");
+                var client = new RestClient($"{host}");
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -86,17 +87,19 @@ namespace JsonParserGTIN
         /// Получение токена демо
         /// </summary>
         /// <returns></returns>
-        public static string getTokenDemo()
+        public static string getTokenNew()
         {
             try
             {
-                string login = File.ReadAllText(@"tokenDemo\login.txt");
-                string password = File.ReadAllText(@"tokenDemo\password.txt");
-                var client = new RestClient("https://markirovka.demo.crpt.tech/api/v3/auth/login");
+                string login = File.ReadAllText(@"tokenNew\login.txt");
+                string password = File.ReadAllText(@"tokenNew\password.txt");
+                string host = File.ReadAllText(@"tokenNew\host.txt");
+                var client = new RestClient($"{host}");
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/json");
-                request.AddParameter("application/json", "{\"login\":\"admin\",\"password\":\"admin\"}", ParameterType.RequestBody);
+                request.AddHeader("Cookie", "JSESSIONID=782D3598E0618D506DF515BF2BF93B16");
+                request.AddParameter("application/json", "{\"login\":\""+ $"{login}" + "\",\"password\":\""+$"{password}"+"\"}", ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
                 string token = JObject.Parse(response.Content)["token"].ToObject<string>();
                 return token;
